@@ -27,18 +27,11 @@ source(paste0(getwd(), "/01_code/01_load_data/load_marine_boundaries.R"))
 
 # 2. make map ####
 
-temp_dir <- tempdir()
-
 map_overview <- leaflet() %>%
   addTiles() 
 
 map_overview
 
-map_overview$save(outfile = "map.html", selfcontained = TRUE, dir = temp_dir)
-
-# map_overview  
-  
-  
 
 
 
