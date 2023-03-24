@@ -59,14 +59,23 @@ cables_power_windfarms <- wfs_human %>%
 
 # natura2000_areas <- wfs_human %>% emodnet_get_layers(layers = "natura2000areas", crs = 4326) # too large...
 
-port_vesseltraffic <- wfs_human %>% emodnet_get_layers(layers = "portvessels", crs = 4326)
+port_vesseltraffic <- wfs_human %>% emodnet_get_layers(layers = "portvessels", crs = 4326) # NULL
 
-test <- port_vesseltraffic %>% 
-  purrr::pluck("pcablesrijks") %>%
+
+dreding_areas <- wfs_human %>% emodnet_get_layers(layers = "dredging", crs = 4326) %>%
+  purrr::pluck("dredging") %>% 
+  dplyr::filter(year_ == 2019) %>%
   crop_geom(bbox = bbox_geom)
 
-dreding_areas <- wfs_human %>% emodnet_get_layers(layers = "dredging", crs = 4326)
-dredging_spoil <- wfs_human %>% emodnet_get_layers(layers = "dredgespoilpoly", crs = 4326)
+# dredging_spoil <- wfs_human %>% emodnet_get_layers(layers = "dredgespoilpoly", crs = 4326) %>% # no entries in the study area
+  # purrr::pluck("dredgespoilpoly")
+
+test <- dredging_spoil %>% 
+  purrr::pluck("dredgespoilpoly") #%>%
+  # dplyr::filter(year_opera == 2019) #%>%
+  # crop_geom(bbox = bbox_geom)
+
+
 bathing_waters <- wfs_human %>% emodnet_get_layers(layers = "bathingwaters", crs = 4326)
 
 
@@ -80,8 +89,8 @@ library(leafem)
 leaflet() %>% addTiles() %>%
   addRectangles(lng1 = bbox_geom[[1]], lat1 = bbox_geom[[2]], lng2 = bbox_geom[[3]], lat2 = bbox_geom[[4]],
                 fillOpacity = 0) %>%
-  # addCircleMarkers(data = shellfishproduction) %>%
-  addPolylines(data = test) %>%
+  addCircleMarkers(data = test) %>%
+  # addPolylines(data = test) %>%
   leafem::addMouseCoordinates()
 
 
