@@ -4,21 +4,27 @@ import numpy as np
 reciever_detections=pd.read_csv(r"C:\Users\wout.decrop\project_environment\hackaton\OpenSeaLabHackathon_SmoothSharks\00_data\01_acoustic_detections\receiver_deployments.csv")
 shark_detections=pd.read_csv(r"C:\Users\wout.decrop\project_environment\hackaton\OpenSeaLabHackathon_SmoothSharks\00_data\01_acoustic_detections\sharks_detections.csv")
 
-shark_detections
-
 shark_detections=shark_detections.loc[shark_detections['sensor_unit'] == "Meters"]
-np.unique(shark_detections["detection_id"])
-shark_detections.columns
-shark_detections["parameter"]
-shark_detections.groupby(['station_name','acoustic_tag_id'])['parameter']
-shark_detections.groupby(['station_name','acoustic_tag_id']).agg({'parameter': ['mean', 'min', 'max']})
-t=shark_detections.groupby(['station_name','acoustic_tag_id']).agg({'parameter': ['mean', 'min', 'max']})
-shark_detections.loc[(0 <= shark_detections['parameter'] <= 10) ]
-shark_detections[shark_detections['parameter'].between(0, 10)]
 
-shark_detections.groupby(pd.cut(shark_detections['parameter'], [0, 25, 50, 75, 100])).sum()
+# shark_detections.groupby(['station_name','acoustic_tag_id'])['parameter']
+parameters=shark_detections.groupby(['station_name']).agg({'parameter': ['mean', 'min', 'max']})
+parameters
+parameters.to_csv(r"C:\Users\wout.decrop\project_environment\hackaton\OpenSeaLabHackathon_SmoothSharks\00_data\01_acoustic_detections\water_level_parameter.csv")
+df=shark_detections
 
-m=pd.cut(shark_detections['parameter'], [0, 10,20,30,40,50])
-shark_detections["range"]=m
-shark_detections.groupby(['station_name','acoustic_tag_id','range']).count()
-shark_detections
+
+
+df['Group'] = pd.cut(df['parameter'], bins=[0, 10, 20, 30, 40, 50], include_lowest=True)
+df['Group'] 
+# group by the 'Group' column and count the number of parameters in each group
+grouped_df = df.groupby(['station_name','Group'])['parameter'].agg(['count'])
+
+a=grouped_df.groupby(['station_name'], group_keys=False).apply(lambda x: x['count'] / x['count'].sum()).sort_index().rename("percentage")
+a
+# grouped_df.groupby(['station_name'], group_keys=False)["count"].apply(lambda x: x['count'] / x['count'].sum()).sort_index().rename("percentage")
+
+
+a.to_csv(r"C:\Users\wout.decrop\project_environment\hackaton\OpenSeaLabHackathon_SmoothSharks\00_data\01_acoustic_detections\water_level_ranges.csv")
+
+
+
