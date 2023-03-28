@@ -28,6 +28,8 @@ source(paste0(getwd(), "/01_code/01_load_data/load_acoustic_detections.R"))
 # prepare the df ####
 
 radius <- 500 #m
+pixel_area <- 250 * 250 #m
+
 
 # test <- bathy_belgium %>% head()
 
@@ -51,25 +53,50 @@ for(i in 1:nrow(receiver_stations_info)){
   
   bathy_belgium_distance <- bathy_belgium_distance %>% cbind(inside_radius)
 }
-receiver_stations_info$station_name
+# receiver_stations_info$station_name
+
+## make summary dataframe ####
+
+summary_bathymetry <- tibble::tibble(station_name = "",
+                                     max_depth = NA,
+                                     min_depth = NA,
+                                     p_0_10m = NA,
+                                     p_10_20m = NA,
+                                     p_20_30m = NA,
+                                     p_30_40m = NA,
+                                     p_40_50m = NA) %>% drop_na()
+
 for(i in receiver_stations_info$station_name){
   # get(i)
   
   temp <- bathy_belgium_distance %>% dplyr::select(depth_m, all_of(i)) %>%
     rename (value = i) %>% 
-     filter(value == T)
+     filter(value == T) %>%
+    mutate(depth_m = depth_m %>% abs())
   
-  summary <- temp %>% mutate(count = 1) %>%
-    summarise(min = min(depth_m), max = max(depth_m),
-              p_0_10m = sum(depth_m %>% between(0,10))) # need to work on that
-  #depth_m, #%>% filter(isTRUE())
-  # bathy_belgium_distance %>% filter())
-    # group_by(i) %>%
-    # summarise(min_depth = min(depth_m)) %>% View()
+  
+  summary_temp <- temp %>%
+    dplyr::summarise(
+      station_name = i,
+      min_depth = min(depth_m),
+      max_depth = max(depth_m),
+      p_0_10m = (sum(ifelse(depth_m %>% between(0,10), 1, 0))   / nrow(temp)),# * pixel_area,
+      p_10_20m = (sum(ifelse(depth_m %>% between(10,20), 1, 0)) / nrow(temp)),# * pixel_area,
+      p_20_30m = (sum(ifelse(depth_m %>% between(20,30), 1, 0)) / nrow(temp)),# * pixel_area,
+      p_30_40m = (sum(ifelse(depth_m %>% between(30,40), 1, 0)) / nrow(temp)),# * pixel_area,
+      p_40_50m = (sum(ifelse(depth_m %>% between(40,50), 1, 0)) / nrow(temp))) #* pixel_area)
+  
+  summary_bathymetry <- summary_bathymetry %>% add_row(summary_temp)
 }
 
+# summary_bathymetry <- summary_bathymetry %>% drop_na()
 
 
+# old ####
+#depth_m, #%>% filter(isTRUE())
+# bathy_belgium_distance %>% filter())
+# group_by(i) %>%
+# summarise(min_depth = min(depth_m)) %>% View()
 
 # test
 location <- receiver_stations_info$geometry[[1]] 
