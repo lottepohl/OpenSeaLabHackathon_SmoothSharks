@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "SmoothSharks"
+  favicon: images/icon2.PNG
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about_project.qmd
+        text: the project
+      - href: about_shark.qmd
+        text: the species
+      - href: about_data.qmd
+        text: the data
+      - href: results.qmd
+        text: hackathon results
+      - href: future_directions.qmd
+        text: future directions
+      - icon: github # add icons that link to social media, etc.
+        href: https://github.com/lottepohl/OpenSeaLabHackathon_SmoothSharks
+
+
+format:
+  html:
+    theme: litera
+    css: styles.css
+    toc: true
