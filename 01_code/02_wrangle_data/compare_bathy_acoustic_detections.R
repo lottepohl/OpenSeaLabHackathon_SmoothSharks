@@ -75,6 +75,19 @@ summary_detections <- summary_detections %>%
 
 summary_all <- full_join(summary_detections,
                          summary_bathymetry) %>%
-  filter(station_name %in% receiver_stations_info$station_name) # filter out stations outside of study area
+  filter(station_name %in% summary_detections$station_name,
+         station_name %in% receiver_stations_info$station_name) # filter out stations outside of study area
+
+save_data(data = summary_all, folder = paste0(getwd(), "/02_results_plots/"))
+write_csv(summary_all, file = paste0(getwd(), "/02_results_plots/summary_all.csv"))
+
+plot_max_depth <- ggplot(data = summary_all, aes(x = station_name, y = max_depth, fill = group)) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+plot_max_depth
 
 
+
+# make overview map ####
