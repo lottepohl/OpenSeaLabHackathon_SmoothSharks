@@ -53,13 +53,13 @@ for(i in 1:nrow(receiver_stations_info)){
   
   bathy_belgium_distance <- bathy_belgium_distance %>% cbind(inside_radius)
 }
-# receiver_stations_info$station_name
 
 ## make summary dataframe ####
 
 summary_bathymetry <- tibble::tibble(station_name = "",
                                      max_depth = NA,
                                      min_depth = NA,
+                                     mean_depth = NA,
                                      p_0_10m = NA,
                                      p_10_20m = NA,
                                      p_20_30m = NA,
@@ -80,6 +80,7 @@ for(i in receiver_stations_info$station_name){
       station_name = i,
       min_depth = min(depth_m),
       max_depth = max(depth_m),
+      mean_depth = mean(depth_m),
       p_0_10m = (sum(ifelse(depth_m %>% between(0,10), 1, 0))   / nrow(temp)),# * pixel_area,
       p_10_20m = (sum(ifelse(depth_m %>% between(10,20), 1, 0)) / nrow(temp)),# * pixel_area,
       p_20_30m = (sum(ifelse(depth_m %>% between(20,30), 1, 0)) / nrow(temp)),# * pixel_area,
@@ -89,42 +90,43 @@ for(i in receiver_stations_info$station_name){
   summary_bathymetry <- summary_bathymetry %>% add_row(summary_temp)
 }
 
-# summary_bathymetry <- summary_bathymetry %>% drop_na()
+## save bathymetry summary ####
+save_data(data = summary_bathymetry, folder = paste0(getwd(), "/00_data/06_Bathymetry_NOAA/"))
 
 
 # old ####
-#depth_m, #%>% filter(isTRUE())
-# bathy_belgium_distance %>% filter())
-# group_by(i) %>%
-# summarise(min_depth = min(depth_m)) %>% View()
-
-# test
-location <- receiver_stations_info$geometry[[1]] 
-# test %>% class()
-
-st_crs(location)
-
-be_crs <- st_crs(32631) #32631
-
-location_transformed <- st_transform(location, be_crs)
-
-circle <- st_buffer(location, dist = radius) #%>% st_sfc(crs = 32631)
-circle %>% class()
-
-leaflet() %>% addTiles() %>%
-  addScaleBar(position = "topleft", options = scaleBarOptions(maxWidth = 250, imperial = F)) %>%
-  addPolygons(data = circle)
-
-st_transform(location,
-  crs = st_crs(location))
-
-box = c(xmin = 0, ymin = 0, xmax = 1, ymax = 1)
-pol = st_sfc(st_buffer(st_point(c(.5, .5)), .6))
-pol_sf = st_sf(a=1, geom=pol)
-plot(st_crop(pol, box))
-plot(st_crop(pol_sf, st_bbox(box)))
-
-
-# bathy_crop <- mask(bathy_belgium_raster, circle)
+# #depth_m, #%>% filter(isTRUE())
+# # bathy_belgium_distance %>% filter())
+# # group_by(i) %>%
+# # summarise(min_depth = min(depth_m)) %>% View()
 # 
-# test <- bathy_belgium_raster %>% as.raster()
+# # test
+# location <- receiver_stations_info$geometry[[1]] 
+# # test %>% class()
+# 
+# st_crs(location)
+# 
+# be_crs <- st_crs(32631) #32631
+# 
+# location_transformed <- st_transform(location, be_crs)
+# 
+# circle <- st_buffer(location, dist = radius) #%>% st_sfc(crs = 32631)
+# circle %>% class()
+# 
+# leaflet() %>% addTiles() %>%
+#   addScaleBar(position = "topleft", options = scaleBarOptions(maxWidth = 250, imperial = F)) %>%
+#   addPolygons(data = circle)
+# 
+# st_transform(location,
+#   crs = st_crs(location))
+# 
+# box = c(xmin = 0, ymin = 0, xmax = 1, ymax = 1)
+# pol = st_sfc(st_buffer(st_point(c(.5, .5)), .6))
+# pol_sf = st_sf(a=1, geom=pol)
+# plot(st_crop(pol, box))
+# plot(st_crop(pol_sf, st_bbox(box)))
+# 
+# 
+# # bathy_crop <- mask(bathy_belgium_raster, circle)
+# # 
+# # test <- bathy_belgium_raster %>% as.raster()
