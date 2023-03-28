@@ -11,6 +11,3 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
-
-BuildType: Website
-WebsitePath: C:/Users/lotte.pohl/Documents/github_repos/OpenSeaLabHackathon_SmoothSharks

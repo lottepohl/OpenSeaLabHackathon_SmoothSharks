@@ -36,7 +36,7 @@ map_overview <-
   #                                                        minZoom = 8.5, maxZoom = 8.5,
   #                                                        dragging = FALSE)) %>%
   leaflet() %>%
-  setView(3.7, 51.48, zoom = 3) %>%
+  setView(3.7, 51.48, zoom = 8) %>%
   addScaleBar(position = "topleft", options = scaleBarOptions(maxWidth = 250, imperial = F)) %>%
   
   addTiles() %>% 
@@ -49,7 +49,9 @@ map_overview <-
                    fillOpacity = 1,
                    opacity = 1,
                    weight = 0,
-                   color = "white") %>%
+                   color = "white",
+                   label = ~station_name,
+                   labelOptions = labelOptions(noHide = T, textOnly = T)) %>%
   # addPolygons(data = eez_netherlands, fillOpacity = 0, opacity = 1, color = "black", weight = 2) %>%
   addPolygons(data = country_belgium, opacity = 1, color = "#ECE4BF", weight = 0.5, fillOpacity = 1, group = "bathymetry") %>%
   addPolygons(data = country_netherlands, opacity = 1, color = "#ECE4BF", weight = 0.5, fillOpacity = 1, group = "bathymetry") %>%
