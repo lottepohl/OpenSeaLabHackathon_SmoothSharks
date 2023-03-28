@@ -25,7 +25,7 @@ country_netherlands <- mregions2::gaz_search(15) %>% mregions2::gaz_geometry()
 ## boundaries Scheldt Estuary: Eastern and Western Scheldt, North Sea ####
 
 north_sea_boundaries <- mregions2::gaz_search(2350) %>% mregions2::gaz_geometry()
-easternscheldt_boundares <- mregions2::gaz_search(5332) %>% mregions2::gaz_geometry()
+easternscheldt_boundaries <- mregions2::gaz_search(5332) %>% mregions2::gaz_geometry()
 westernscheldt_boundaries <- mregions2::gaz_search(4752) %>% mregions2::gaz_geometry()
 scheldt_boundaries <- mregions2::gaz_search(4812) %>% mregions2::gaz_geometry()
 
