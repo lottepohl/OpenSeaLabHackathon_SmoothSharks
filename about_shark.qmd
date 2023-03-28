@@ -2,8 +2,40 @@
 title: "About the Shark"
 ---
 
-About this site
+## Starry smooth-hound
 
-```{r}
-1 + 1
-```
+(*Mustelus asterias* Cloquet, 1819)
+
+> Elasmobranchii (sharks and rays) > Carcharhiniformes (Ground sharks) > Triakidae (Houndsharks)
+
+Sharks, belonging to the Elasmobranchii class, are cartilaginous fish that have been around for more than 400 million years. Within this class, sharks are further classified under the Carcharhiniformes order, which is characterized by ground sharks. Specifically, sharks in the Triakidae family, also known as houndsharks, belong to this order.
+
+Hound Sharks are medium-sized sharks that can grow up to 1.4 meters in length. They have a slender body with a pointed snout and large eyes, making them efficient hunters in their marine environment. Their skin is covered with small, star-shaped dermal denticles, which provides them with a unique texture and gives them their common name of "starry '' smooth-hound.
+
+In terms of reproduction, houndsharks use a reproductive mode called “aplacental viviparity”. This mode of reproduction is common among most shark species, where the embryos develop in eggs within the female's uterus and are nourished by the yolk sac until birth. The gestation period for houndsharks lasts for approximately 10 months, with litter sizes ranging from 7 to 15 pups every 2 years. Interestingly, houndsharks show a high degree of sexual dimorphism, where females are larger than males, and they reach sexual maturity at around 4-5 years of age.
+
+Overall, the biology of houndsharks is fascinating, and their unique characteristics, including their classification, morphology, and reproductive biology, make them a topic of interest among marine biologists and shark enthusiasts alike.
+
+## Ecology
+
+Mustelus asterias, commonly referred to as the starry smooth-hound shark, is a fascinating demersal species that is widely distributed throughout the Northeast Atlantic region, from the British Isles and North Sea. These sharks are typically bottom-dwellers, often found in sandy or muddy coastal waters, estuaries, and bays, with a depth range of 0 to 350 meters.
+
+The starry smooth-hound shark's diet is predominantly crustaceans, including hermit crabs (Pagurus bernhardus), flying crabs (Liocarcinus holsatus), edible crabs (Cancer pagurus), and velvet swimming crabs (Necora puber). Despite their status as a near-threatened species, these sharks play a vital ecological role in the marine ecosystem, serving as both predator and prey.
+
+The International Union for Conservation of Nature (IUCN) Red List Status has classified Mustelus asterias as "Near Threatened" (NT) as of August 4, 2020, indicating the significant risks to their population due to several factors, including fishing bycatch, habitat destruction, and pollution. As a result, effective conservation measures are necessary to ensure the long-term survival of this species.
+
+Among the most significant threats to the starry smooth-hound shark is bycatch, which refers to the unintentional capture of non-target species during fishing activities. The increasing demand for seafood has led to more fishing activities, making it increasingly difficult to avoid catching non-target species such as sharks. Habitat destruction is also a major threat, resulting from the expansion of human activities such as coastal development, dredging, and sand mining, which can lead to the degradation or complete loss of their habitat.
+
+Pollution is yet another significant threat, with the accumulation of toxins and other harmful substances in the environment leading to the disruption of the ecosystem and the food chain. For instance, plastic pollution in the ocean, which is a growing concern, poses a significant risk to the starry smooth-hound shark's survival.
+
+In conclusion, the starry smooth-hound shark is a crucial species in the marine ecosystem. However, their population is currently under threat from several factors, including bycatch, habitat destruction, and pollution. Effective conservation measures are, therefore, essential to ensure their long-term survival and the ecological integrity of our oceans.
+
+## Occurrence in the study area
+
+The Scheldt river, located in the northern region of Europe, is known for its diverse and thriving aquatic ecosystem, which supports a variety of fish species. One such species that has recently caught the attention of marine biologists and researchers is the Mustelus asterias, commonly referred to as the starry smooth-hound shark.
+
+Despite being present in the Northeast Atlantic, the occurrence of the starry smooth-hound shark in the Scheldt river is not widely known. However, studies conducted in recent years have revealed that the Scheldt Estuary is home to a significant population of adult female M.asterias, which measure approximately one meter in total length. These individuals are mostly observed between the months of April and October, and their presence in the estuary has piqued the interest of researchers, who seek to better understand their behavior and ecology.
+
+One hypothesis that has emerged is that the Scheldt Estuary serves as a potential breeding ground for this species of shark. Indeed, the presence of young pups has been observed in both the Eastern and Western parts of the river, between the months of April and September. It is believed that the female sharks may swim into the estuary to release their young, and then swim out again, potentially returning to the estuary in subsequent years. This behavior is of particular interest, as it suggests that the Scheldt Estuary may play an important role in the life cycle of Mustelus asterias.
+
+However, further research is required to confirm this hypothesis and to gain a deeper understanding of the reproductive behavior and ecology of the starry smooth-hound shark in the Scheldt river. Researchers are keen to investigate the potential impact of human activities, such as pollution and habitat destruction, on the population of this species, as well as to explore potential conservation measures to protect their habitat and ensure their survival in the future.

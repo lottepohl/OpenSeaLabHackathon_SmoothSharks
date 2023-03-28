@@ -1,14 +1,11 @@
 ---
 title: "About the Data"
-execute:
-  echo: false
-  include: false
-editor_options: 
-  chunk_output_type: console
 ---
 
 
 ```{r}
+#| include: false
+#| echo: false
 # workspace
 library(leaflet)
 library(leafem)
@@ -19,13 +16,35 @@ source(paste0(getwd(), "/01_code/overview_map.R"))
 
 ```
 
+## Reasoning 
 
-## Shark detection data
+The study of marine species and their movements has become increasingly important in recent years due to the growing concern over human impacts on marine ecosystems. Sharks, in particular, are of great interest due to their importance as apex predators and their susceptibility to overfishing and habitat loss. One species of shark that has received attention in recent years is the Mustelus asterias, commonly known as the starry smooth-hound shark.
+
+To better understand the behavior and movements of Mustelus asterias, the present study utilized acoustic detection data collected from a network of 35 permanently installed acoustic receiver stations in the Eastern Scheldt. These receiver stations were arranged in two north-south gates, with a distance of approximately 1 km between each receiver. The deployment of acoustic receiver stations allowed for continuous monitoring of the acoustic tags affixed to adult individuals of Mustelus asterias.
+
+## Data collection 
+
+In 2018 and 2019, a total of 30 adult individuals of Mustelus asterias were equipped with Acoustic Data Storage Tags (ADST) that emit acoustic signals and can be detected by the acoustic receivers when within a range of approximately 200 meters. The use of ADSTs allowed for long-term monitoring of individual sharks, with each tag having a lifespan of approximately 500 days.
+One key feature of the ADSTs is that, in addition to emitting acoustic signals, they also transmit the current depth of the tagged animal for each detection. This feature provides valuable information on the vertical movements of the sharks and allows researchers to investigate factors that may influence their behavior, such as changes in water temperature or prey availability.
+
+
+Over the two-year study period, the acoustic receivers detected approximately 10,000 instances of the tagged individuals. The data set provides valuable insight into the behavior and movement patterns of Mustelus asterias in the Eastern Scheldt region. For example, the data show that individuals exhibit site fidelity, with some individuals remaining in the same location for extended periods of time, while others exhibit more extensive movements throughout the region.
+
+Overall, the acoustic detection data collected in this study provides a wealth of information on the behavior and movements of Mustelus asterias in the Eastern Scheldt region. The data can be used to inform conservation and management efforts for this species, and can also contribute to our understanding of the broader ecological processes that shape marine ecosystems.
+
+
+## Datasets 
+
+High-resolution bathymetry data plays a crucial role in the comprehensive understanding of the Scheldt Estuary, particularly due to its fast-changing bathymetry that arises from the sandy substrate. Such data enables researchers to accurately characterize the estuary's topography and thus evaluate its hydraulic and ecological functions.
+
+Moreover, the integration of the EMODnet Seabed Habitats dataset with the Ecotope map of the Western Scheldt can provide invaluable insights into the distribution and abundance of benthic species in the estuary. This integration enables researchers to investigate the relationship between habitat types and species distribution, thereby improving our understanding of the ecological dynamics of the Western Scheldt. Therefore, the combination of these datasets holds great potential for the advancement of research in the field of marine ecology.
+
 
 ## Study Area
 
 ```{r map}
-#|include: true
+#| include: true
+#| echo: false
 
 map_overview <- 
   leaflet(options = leafletOptions(zoomControl = T,
@@ -34,7 +53,7 @@ map_overview <-
   addTiles(group = "OpenStreetMap") %>%
   addProviderTiles("Esri.WorldImagery", options = providerTileOptions(opacity = 0.6), group = "satellite") %>%
   # leaflet() %>%
-  setView(4.2, 51.48, zoom = 7.5) %>%
+  setView(4.2, 51.48, zoom = 8) %>%
   addScaleBar(position = "bottomleft", options = scaleBarOptions(maxWidth = 250, imperial = F)) %>%
   
   addTiles() %>% 

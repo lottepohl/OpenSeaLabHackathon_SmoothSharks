@@ -2,4 +2,35 @@
 title: "Hackathon Results"
 ---
 
-test3
+```{r}
+#| include: false
+#| echo: false
+# # workspace
+# library(leaflet)
+# library(leafem)
+# library(leaflet.extras)
+
+setwd("C:/Users/lotte.pohl/Documents/github_repos/OpenSeaLabHackathon_SmoothSharks")
+source(paste0(getwd(), "/01_code/plots.R"))
+
+```
+
+
+```{r}
+#| include: true
+#| echo: false
+plot_depth_range
+```
+
+Depth range of the seafloor and the depth range of shark detections per station. This figure shows how sharks are mostly detected just above the minimum depth of the seafloor, but also below the maximum depth for some stations. The latter case could be due to the lack of accurate bathymetry data. 
+
+
+```{r}
+#| include: true
+#| echo: false
+
+plot_sharks_wsOG10
+```
+
+Figure of the depth (m) in function of the Tag Serial Number in the station has the most detections (i.e., ws-OG10). Most sharks range over a depth of -5 up to -25 m. It’s important to notice that shark 1903302 only had 2 detections.
+
