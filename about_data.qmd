@@ -29,11 +29,13 @@ source(paste0(getwd(), "/01_code/overview_map.R"))
 
 map_overview <- 
   leaflet(options = leafletOptions(zoomControl = T,
-                                                         minZoom = 8.5, maxZoom = 15,
+                                                         minZoom = 7, maxZoom = 15,
                                                          dragging = T)) %>%
+  addTiles(group = "OpenStreetMap") %>%
+  addProviderTiles("Esri.WorldImagery", options = providerTileOptions(opacity = 0.6), group = "satellite") %>%
   # leaflet() %>%
-  setView(3.7, 51.48, zoom = 8) %>%
-  addScaleBar(position = "topleft", options = scaleBarOptions(maxWidth = 250, imperial = F)) %>%
+  setView(4.2, 51.48, zoom = 7.5) %>%
+  addScaleBar(position = "bottomleft", options = scaleBarOptions(maxWidth = 250, imperial = F)) %>%
   
   addTiles() %>% 
   leafem::addMouseCoordinates() %>%
@@ -66,11 +68,13 @@ map_overview <-
   leafem::addMouseCoordinates() %>%
   addFullscreenControl() %>%
   addLayersControl(position = "topright",
-                   # baseGroups = c("EMODnet bathymetry", "satellite", "bathymetry", "OpenStreetMap"),
+                   baseGroups = c("bathymetry", "satellite", "OpenStreetMap"),
                    overlayGroups = c("receiver station names"),
-                   options = layersControlOptions(collapsed = FALSE))
-  # addLegend(colors = c("red"),
-  #           values = c("Schelde Estuary"))
+                   options = layersControlOptions(collapsed = FALSE)) %>%
+  addLegend(colors = "red",
+            labels = "Schelde Estuary outlines",
+            opacity = 1) %>%
+  hideGroup("receiver station names")
 
 map_overview
 ```

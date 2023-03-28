@@ -1,9 +1,0 @@
----
-title: "Smooth Sharks - OpenSeaLabHackathon 2023"
----
-
-**Hi! Welcome to our website! We are the *SmoothSharks* Team of the 2023 OpenSeaLab Hackathon.**
-
-Visit the Hackathon website [here](https://eventornado.com/event/emodnet-opensealab-hackathon#home) :)
-
-Feel free to explore our website about the Project we carried out from March 27-28, 2023.
