@@ -1,5 +1,20 @@
 ---
 title: "About the Data"
+execute:
+  echo: false
+  include: false
+editor_options: 
+  chunk_output_type: console
 ---
 
-test1
+
+```{r}
+# workspace
+setwd("C:/Users/lotte.pohl/Documents/github_repos/OpenSeaLabHackathon_SmoothSharks")
+source(paste0(getwd(), "/01_code/overview_map.R"))
+
+```
+
+
+# Shark detection data
+

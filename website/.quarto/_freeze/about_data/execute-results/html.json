@@ -1,0 +1,14 @@
+{
+  "hash": "67fc2d0a89cabfd904d9fe15ab6909e5",
+  "result": {
+    "markdown": "---\ntitle: \"About the Data\"\nexecute:\n  echo: false\n  include: false\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n\n# Shark detection data\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -11,7 +11,7 @@ library(leaflet)
 library(leafem)
 # library(leaflet.extras)
 
-rm(list = ls()) # clear workspace
+# rm(list = ls()) # clear workspace
 
 ## 1.1. functions ####
 source(paste0(getwd(), "/01_code/load_save_rds_files.R"))
