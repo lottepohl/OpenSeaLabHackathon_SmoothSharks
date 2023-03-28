@@ -10,5 +10,5 @@ bathy_belgium <- read_csv(paste0(getwd(),"/00_data/06_Bathymetry_NOAA/marmap_coo
 
 bathy_belgium_raster <- bathy_belgium %>% raster::rasterFromXYZ(crs = "EPSG:4326") # rasterise with `raster` package
 
-rm(bathy_belgium) # file not needed anymore
+# rm(bathy_belgium) # file not needed anymore
 
