@@ -24,6 +24,19 @@ source(paste0(getwd(), "/01_code/01_load_data/load_bathymetry_NOAA.R"))
 
 source(paste0(getwd(), "/01_code/01_load_data/load_acoustic_detections.R"))
 
+bathy_schelde_fine <- read_csv(file = paste0(getwd(), "/00_data/07_Bathymetry_Schelde/scheldeonthefly3.csv"))
+# bahty_schelde_fine <- bathy_schelde_fine
+# rm(bahty_schelde_fine)
+
+bathy_schelde_fine %>% head() %>% View()
+# bathy_schelde_fine %>% colnames()
+
+bathy_schelde_fine <- bathy_schelde_fine %>%
+  # rename(latitude = `3.398300991`,
+  #        longitude = `51.5022841`,
+  #         depth_m = `10000`) %>%
+  mutate( depth_m = depth_m / 100)
+
 
 # prepare the df ####
 
@@ -35,7 +48,7 @@ pixel_area <- 250 * 250 #m
 
 bbox <- c(xmin = 3.4, xmax = 3.84, ymin = 51.3, ymax = 51.5)
 
-bathy_belgium_distance <- bathy_belgium %>% #mutate(geometry = st_point(latitude, longitude))
+bathy_belgium_distance <- bathy_schelde_fine %>% #mutate(geometry = st_point(latitude, longitude))
   mutate(st_as_sf(., coords = c("longitude", "latitude"), crs = st_crs(4326))) %>% 
   filter(latitude %>% between(bbox[[3]], bbox[[4]]),
          longitude %>% between(bbox[[1]], bbox[[2]]))

@@ -1,5 +1,7 @@
 ---
 title: "Hackathon Results"
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -9,6 +11,7 @@ title: "Hackathon Results"
 # library(leaflet)
 # library(leafem)
 # library(leaflet.extras)
+rm(list = ls())
 
 setwd("C:/Users/lotte.pohl/Documents/github_repos/OpenSeaLabHackathon_SmoothSharks")
 source(paste0(getwd(), "/01_code/plots.R"))

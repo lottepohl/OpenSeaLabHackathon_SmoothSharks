@@ -1,9 +1,40 @@
 ---
-title: "Smooth Sharks - OpenSeaLabHackathon 2023"
+title: "Smooth Sharks"
+subtitle: "OpenSeaLab Hackathon 2023"
 ---
 
-**Hi! Welcome to our website! We are the *SmoothSharks* Team of the 2023 OpenSeaLab Hackathon.**
+:::{.column-page-inset}
 
-Visit the Hackathon website [here](https://eventornado.com/event/emodnet-opensealab-hackathon#home) :)
+Hi! Welcome to our website! We are the *SmoothSharks* Team of the 2023 OpenSeaLab Hackathon.
 
-Feel free to explore our website about the Project we carried out from March 27-28, 2023.
+Visit the Hackathon website [here](https://eventornado.com/event/emodnet-opensealab-hackathon#home)!
+
+Feel free to explore our website about the project we carried out from March 27 to March 28, 2023.
+
+We also created a short video! Check it out :) 
+
+:::
+
+:::{.column-body}
+
+{{< video https://www.youtube.com/embed/UlxbbnpOiog width="550" height="300">}}
+
+:::
+
+
+:::{.column-page-inset}
+
+Below you see an image of the starry smooth-hound shark *Mustelus asterias*, our team mascot. 
+(Image license CC BY-NC-ND 2.0)
+
+:::
+
+:::{.column-body}
+![](images/Mustelusasterias.png)
+:::
+
+<!-- image: images/Mustelusasterias.png -->
+<!-- about:  -->
+<!--   template: solana -->
+<!--   image-shape: rounded -->
+<!--   image-width: 17em -->

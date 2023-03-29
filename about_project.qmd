@@ -17,11 +17,11 @@ Using the Open Sea Lab 3.0 Virtual Hackathon 2023 a small group led by Lotte Poh
 
 The goal of EMODnet is to make high-quality marine data more accessible by collecting and processing data from a variety of sources. EMODnet has for example bathymetry data which could be used in conjunction with our data sets from the Eastern Scheldt to evaluate our species of interest, the starry smooth-hound shark. 
 
-## The Species 
+## The Methods
 
 In order to investigate the behavior of the starry smooth-hound shark, the utilization of acoustic tags was employed to extract comprehensive data from multiple individuals. This methodology was chosen due to its effectiveness in obtaining detailed information regarding the behavioral patterns of the subject. By using acoustic tags, various auditory signals produced by the species can be recorded and monitored, providing insights into its activities, movements, and interactions with the environment. Consequently, the use of acoustic tags as a research tool presents an optimal approach to gather significant data for a comprehensive analysis of the behavioral patterns of the species under study.
 
-## Data Collection
+### Data Collection
 
 In 2018 and 2019, 30 sharks (19 females and 11 males) were equipped with Acoustic Data Storage Tags (ADST), which comprise an acoustic tag and a data storage tag. Fourteen of the female sharks were detected at receiver stations located in the coastal area at the mouth of the Western Scheldt, a part of the Permanent Belgian Acoustic Receiver Network (PBARN). The presence or absence of the animals from the receiver in a vertical range was determined by the transmission of either a depth or temperature value per detection. One of the 14 detected female sharks had a recovered tag, which allowed access to the complete pressure and temperature log, recording every 120 seconds.
 
@@ -41,17 +41,17 @@ Lotte Pohl assembled our team called the “Smooth Sharks” for the Hackathon. 
 
 > For all of us this is our first hackathon. 
 
-* Lotte is finishing her master’s degree in Marine Biological Resources and is writing her thesis on the starry smooth-hound shark
+* **Lotte** is finishing her master’s degree in Marine Biological Resources and is writing her thesis on the starry smooth-hound shark.
 
-* Wout is a bioscience engineer with additional background in coding which helped during this project.
+* **Wout** is a bioscience engineer with additional background in coding which helped during this project.
 
-* David is an environmental biologist working on the movement ecology of fish in the Mediterranean and Belgian Part of the North Sea using various fish tracking techniques.
+* **David** is an environmental biologist working on the movement ecology of fish in the Mediterranean and Belgian Part of the North Sea using various fish tracking techniques.
 
-* Arienne is a marine science researcher and geographer currently focusing on the processing of various acoustic data.
+* **Arienne** is a marine science researcher and geographer currently focusing on the processing of various acoustic data.
 
-* Jennifer, a developmental biologist turned frontend developer, has a strong interest in ocean conservation and helped with the writing of this project. 
+* **Jennifer**, a developmental biologist turned frontend developer, has a strong interest in ocean conservation and helped with the writing of this project. 
 
-* Silvia is a Marine Biology student interested in graphic design
+* **Silvia** is a barine biology student interested in graphic design.
 
 
 

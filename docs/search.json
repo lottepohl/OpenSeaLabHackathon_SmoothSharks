@@ -42,18 +42,11 @@
     "text": "The Hackathon\nUsing the Open Sea Lab 3.0 Virtual Hackathon 2023 a small group led by Lotte Pohl examined the starry smooth-hound shark presence in the Scheldt Estuary in combination with data from the European Marine Observation and Data network (EMODnet).\nThe goal of EMODnet is to make high-quality marine data more accessible by collecting and processing data from a variety of sources. EMODnet has for example bathymetry data which could be used in conjunction with our data sets from the Eastern Scheldt to evaluate our species of interest, the starry smooth-hound shark."
   },
   {
-    "objectID": "about_project.html#the-species",
-    "href": "about_project.html#the-species",
+    "objectID": "about_project.html#the-methods",
+    "href": "about_project.html#the-methods",
     "title": "About the Project",
-    "section": "The Species",
-    "text": "The Species\nIn order to investigate the behavior of the starry smooth-hound shark, the utilization of acoustic tags was employed to extract comprehensive data from multiple individuals. This methodology was chosen due to its effectiveness in obtaining detailed information regarding the behavioral patterns of the subject. By using acoustic tags, various auditory signals produced by the species can be recorded and monitored, providing insights into its activities, movements, and interactions with the environment. Consequently, the use of acoustic tags as a research tool presents an optimal approach to gather significant data for a comprehensive analysis of the behavioral patterns of the species under study."
-  },
-  {
-    "objectID": "about_project.html#data-collection",
-    "href": "about_project.html#data-collection",
-    "title": "About the Project",
-    "section": "Data Collection",
-    "text": "Data Collection\nIn 2018 and 2019, 30 sharks (19 females and 11 males) were equipped with Acoustic Data Storage Tags (ADST), which comprise an acoustic tag and a data storage tag. Fourteen of the female sharks were detected at receiver stations located in the coastal area at the mouth of the Western Scheldt, a part of the Permanent Belgian Acoustic Receiver Network (PBARN). The presence or absence of the animals from the receiver in a vertical range was determined by the transmission of either a depth or temperature value per detection. One of the 14 detected female sharks had a recovered tag, which allowed access to the complete pressure and temperature log, recording every 120 seconds.\nThis study represents the beginning of our research efforts to investigate the complexities of species-specific ecological dynamics and the intricate interplay between various environmental factors. Although this work serves as a preliminary case study, our ultimate goal is to broaden the scope of our investigation to include other species and ecosystems, thus enabling a more comprehensive understanding of ecological processes."
+    "section": "The Methods",
+    "text": "The Methods\nIn order to investigate the behavior of the starry smooth-hound shark, the utilization of acoustic tags was employed to extract comprehensive data from multiple individuals. This methodology was chosen due to its effectiveness in obtaining detailed information regarding the behavioral patterns of the subject. By using acoustic tags, various auditory signals produced by the species can be recorded and monitored, providing insights into its activities, movements, and interactions with the environment. Consequently, the use of acoustic tags as a research tool presents an optimal approach to gather significant data for a comprehensive analysis of the behavioral patterns of the species under study.\n\nData Collection\nIn 2018 and 2019, 30 sharks (19 females and 11 males) were equipped with Acoustic Data Storage Tags (ADST), which comprise an acoustic tag and a data storage tag. Fourteen of the female sharks were detected at receiver stations located in the coastal area at the mouth of the Western Scheldt, a part of the Permanent Belgian Acoustic Receiver Network (PBARN). The presence or absence of the animals from the receiver in a vertical range was determined by the transmission of either a depth or temperature value per detection. One of the 14 detected female sharks had a recovered tag, which allowed access to the complete pressure and temperature log, recording every 120 seconds.\nThis study represents the beginning of our research efforts to investigate the complexities of species-specific ecological dynamics and the intricate interplay between various environmental factors. Although this work serves as a preliminary case study, our ultimate goal is to broaden the scope of our investigation to include other species and ecosystems, thus enabling a more comprehensive understanding of ecological processes."
   },
   {
     "objectID": "about_project.html#objectives",
@@ -67,7 +60,7 @@
     "href": "about_project.html#about-the-team",
     "title": "About the Project",
     "section": "About the Team",
-    "text": "About the Team\nLotte Pohl assembled our team called the “Smooth Sharks” for the Hackathon. Members of the team include Wout Decrop, David Casals, Arienne Calonge, and Jennifer Feenstra-Arengård and Silvia Blum.\n\nFor all of us this is our first hackathon.\n\n\nLotte is finishing her master’s degree in Marine Biological Resources and is writing her thesis on the starry smooth-hound shark\nWout is a bioscience engineer with additional background in coding which helped during this project.\nDavid is an environmental biologist working on the movement ecology of fish in the Mediterranean and Belgian Part of the North Sea using various fish tracking techniques.\nArienne is a marine science researcher and geographer currently focusing on the processing of various acoustic data.\nJennifer, a developmental biologist turned frontend developer, has a strong interest in ocean conservation and helped with the writing of this project.\nSilvia is a Marine Biology student interested in graphic design"
+    "text": "About the Team\nLotte Pohl assembled our team called the “Smooth Sharks” for the Hackathon. Members of the team include Wout Decrop, David Casals, Arienne Calonge, and Jennifer Feenstra-Arengård and Silvia Blum.\n\nFor all of us this is our first hackathon.\n\n\nLotte is finishing her master’s degree in Marine Biological Resources and is writing her thesis on the starry smooth-hound shark.\nWout is a bioscience engineer with additional background in coding which helped during this project.\nDavid is an environmental biologist working on the movement ecology of fish in the Mediterranean and Belgian Part of the North Sea using various fish tracking techniques.\nArienne is a marine science researcher and geographer currently focusing on the processing of various acoustic data.\nJennifer, a developmental biologist turned frontend developer, has a strong interest in ocean conservation and helped with the writing of this project.\nSilvia is a barine biology student interested in graphic design."
   },
   {
     "objectID": "about_shark.html",
@@ -107,9 +100,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Smooth Sharks - OpenSeaLabHackathon 2023",
+    "title": "Smooth Sharks",
     "section": "",
-    "text": "Hi! Welcome to our website! We are the SmoothSharks Team of the 2023 OpenSeaLab Hackathon.\nVisit the Hackathon website here :)\nFeel free to explore our website about the Project we carried out from March 27-28, 2023."
+    "text": "Hi! Welcome to our website! We are the SmoothSharks Team of the 2023 OpenSeaLab Hackathon.\nVisit the Hackathon website here!\nFeel free to explore our website about the project we carried out from March 27 to March 28, 2023.\nWe also created a short video! Check it out :)\n\n\n\n\n\nBelow you see an image of the starry smooth-hound shark Mustelus asterias, our team mascot. (Image license CC BY-NC-ND 2.0)"
   },
   {
     "objectID": "LICENSE.html",
