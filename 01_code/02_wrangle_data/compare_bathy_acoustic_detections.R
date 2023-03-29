@@ -17,8 +17,7 @@ source(paste0(getwd(), "/01_code/load_save_rds_files.R"))
 
 ## 1.2 load bathymetry ####
 
-source(paste0(getwd(), "/01_code/01_load_data/load_bathymetry_NOAA.R"))
-
+# source(paste0(getwd(), "/01_code/01_load_data/load_bathymetry_NOAA.R"))
 
 ## 1.3 load info about acoustic detections ####
 
@@ -28,7 +27,7 @@ source(paste0(getwd(), "/01_code/01_load_data/load_acoustic_detections.R"))
 
 ### bathymetry ####
 
-summary_bathymetry <- load_data(filestring = "summary_bathymetry", folder = paste0(getwd(), "/00_data/06_Bathymetry_NOAA/"))
+summary_bathymetry <- load_data(filestring = "summary_bathymetry", folder = paste0(getwd(), "/00_data/07_Bathymetry_Schelde/"))
 
 ### acoustic detections ####
 
@@ -46,6 +45,7 @@ detections_minmax <- df1 %>%
 df2 <- read_csv(file = paste0(getwd(), "/00_data/01_acoustic_detections/water_level_ranges.csv"), show_col_types = FALSE)
 
 detections_depthrange <- df2 %>%
+  mutate(percentage = percentage * 100) %>%
   pivot_wider(names_from = Group,
               values_from = percentage)
   # rename(p_0_10m = `(-0.001,10.0]`)
@@ -60,13 +60,21 @@ colnames(summary_detections) <- summary_bathymetry %>% colnames() # unify column
 ## prepare to join the two dataframes to plot them ####
 
 summary_bathymetry <- summary_bathymetry %>% 
-  mutate(group = "bathymetry"())
-
-summary_detections <- summary_detections %>%
-  mutate(group = "detections",
+  mutate(group = "depth",
          max_depth = max_depth %>% as.numeric,
          min_depth = min_depth %>% as.numeric,
          mean_depth = mean_depth %>% as.numeric,
+         p_0_10m = p_0_10m %>% as.numeric(),
+         p_10_20m = p_10_20m %>% as.numeric(),
+         p_20_30m = p_20_30m %>% as.numeric(),
+         p_30_40m = p_30_40m %>% as.numeric(),
+         p_40_50m = p_40_50m %>% as.numeric())
+
+summary_detections <- summary_detections %>%
+  mutate(group = "detection",
+         max_depth = (max_depth %>% as.numeric) * -1,
+         min_depth = (min_depth %>% as.numeric) * -1,
+         mean_depth = (mean_depth %>% as.numeric) * -1,
          p_0_10m = p_0_10m %>% as.numeric(),
          p_10_20m = p_10_20m %>% as.numeric(),
          p_20_30m = p_20_30m %>% as.numeric(),
@@ -81,39 +89,39 @@ summary_all <- full_join(summary_detections,
 save_data(data = summary_all, folder = paste0(getwd(), "/02_results_plots/"))
 write_csv(summary_all, file = paste0(getwd(), "/02_results_plots/summary_all.csv"))
 
-plot_max_depth <- ggplot(data = summary_all, aes(x = station_name, y = max_depth, fill = group)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_minimal(base_size = 16) +
-  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
-  labs(title = "Max. depth comparison between bathymetry and acoustic detections", 
-       x = "Receiver station", y = "Depth in m", fill = "Group")
-
-plot_max_depth
-
-plot_min_depth <- ggplot(data = summary_all, aes(x = station_name, y = min_depth, fill = group)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_minimal(base_size = 16) +
-  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
-  labs(title = "Min. depth (bathymetry versus acoustic detections)", 
-       x = "Receiver station", y = "Depth in m", fill = "Group")
-
-plot_min_depth
-
-# plots for the depth ranges at station ws-OG10
-
-summary_wide <- summary_all %>% pivot_longer(cols = starts_with("p"), names_to = "depth_range")
-
-plot_depthbin_ws_OG10 <- ggplot(data = summary_wide %>% filter(station_name == "ws-OG10"), 
-                                  aes(x = depth_range, y = value, fill = group)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_minimal(base_size = 16) +
-  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
-  labs(title = "station ws-OG10: Depth bin percentage (bathymetry versus acoustic detections)", 
-       x = "Depth bin", y = "percentage", fill = "Group")
-
-plot_depthbin_ws_OG10
+# plot_max_depth <- ggplot(data = summary_all, aes(x = station_name, y = max_depth, fill = group)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   theme_minimal(base_size = 12) +
+#   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+#   labs(title = "deepest depth", 
+#        x = "Receiver station", y = "Depth in m", fill = "Group")
+# 
+# plot_max_depth
+# 
+# plot_min_depth <- ggplot(data = summary_all, aes(x = station_name, y = min_depth, fill = group)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   theme_minimal(base_size = 12) +
+#   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+#   labs(title = "shallowest depth", 
+#        x = "Receiver station", y = "Depth in m", fill = "Group")
+# 
+# plot_min_depth
+# 
+# # plots for the depth ranges at station ws-OG10
+# 
+# summary_wide <- summary_all %>% pivot_longer(cols = starts_with("p"), names_to = "depth_range")
+# 
+# plot_depthbin_ws_OG10 <- ggplot(data = summary_wide %>% filter(station_name == "ws-OG10"), 
+#                                   aes(x = depth_range, y = value, fill = group)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   theme_minimal(base_size = 12) +
+#   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+#   labs(title = "station ws-OG10: Depth bin percentage (bathymetry versus acoustic detections)", 
+#        x = "Depth bin", y = "percentage", fill = "Group")
+# 
+# plot_depthbin_ws_OG10
 
 # make overview map ####
 
-sharks_detections %>% group_by(station_name) %>%
-  summarise(n_detect = n()) %>% View()
+# sharks_detections %>% group_by(station_name) %>%
+#   summarise(n_detect = n()) %>% View()
