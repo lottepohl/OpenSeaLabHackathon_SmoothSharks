@@ -34,14 +34,44 @@ n_ind <- sharks_detections %>%
 summary_all <- summary_all %>% left_join(n_detect) %>% left_join(n_ind) %>%
   mutate(station_name = factor(station_name))
 
-## chi2 test ####
-test <- summary_all$station_name %>% levels()
-result <- by(summary_all, summary_all$station_name, function(x) {
-  chisq.test(x[, 5:9], x$group)
-})
+## check detection summary ####
+summary_all2 <- sharks_detections %>% 
+  filter(sensor_type == "pressure",
+         station_name %in% receiver_stations_info$station_name) %>%
+  mutate(parameter = -parameter,
+         group = "detection",
+         count = 1) %>%
+  group_by(station_name) %>%
+  summarise(min_depth = max(parameter, na.rm = T),
+            max_depth = min(parameter, na.rm = T),
+            mean_depth = mean(parameter, na.rm = T),
+            group = "detection",
+            n_detect = sum(count),
+            p_0_10m = ((parameter %>% between(-10, 0) %>% sum()) / n_detect) * 100,
+            p_10_20m = ((parameter %>% between(-20, -10) %>% sum()) / n_detect) * 100,
+            p_20_30m = ((parameter %>% between(-30, -20) %>% sum()) / n_detect) * 100,
+            p_30_40m = ((parameter %>% between(-40, -30) %>% sum()) / n_detect) * 100,
+            p_40_50m = ((parameter %>% between(-50, -40) %>% sum()) / n_detect) * 100
+            ) %>%
+  rbind(summary_all %>% 
+          filter(group == "depth") %>% 
+          mutate(n_detect = NA) %>%
+          dplyr::select(!n_ind)
+        ) %>% 
+  dplyr::select(!n_detect) %>%
+  left_join(n_detect) %>% left_join(n_ind) %>%
+  mutate(station_name = factor(station_name))
 
-# view results
-result
+# 
+# ## chi2 test ####
+# test <- summary_all$station_name %>% levels()
+# result <- by(summary_all, summary_all$station_name, function(x) {
+#   # chisq.test(x[, 5:9], x$group)
+#   fisher.test(x[, 5:7], simulate.p.value = TRUE)#$p.value
+# })
+# 
+# # view results
+# result
 
 # plots ####
 plot_max_depth <- ggplot(data = summary_all, aes(x = station_name, y = max_depth, fill = group)) +
@@ -67,6 +97,9 @@ plot_min_depth <- ggplot(data = summary_all, aes(x = station_name, y = min_depth
 summary_wide <- summary_all %>% pivot_longer(cols = starts_with("p"), names_to = "depth_range") %>%
   mutate(depth_range = depth_range %>% factor(levels = c("p_40_50m", "p_30_40m", "p_20_30m", "p_10_20m", "p_0_10m")))
 
+summary_wide2 <- summary_all2 %>% pivot_longer(cols = starts_with("p"), names_to = "depth_range") %>%
+  mutate(depth_range = depth_range %>% factor(levels = c("p_40_50m", "p_30_40m", "p_20_30m", "p_10_20m", "p_0_10m")))
+
 
 plot_depthbin_ws_OG10 <- ggplot(data = summary_wide %>% filter(station_name == "ws-OG10"),
                                   aes(x = depth_range, y = value, fill = group)) +
@@ -78,48 +111,50 @@ plot_depthbin_ws_OG10 <- ggplot(data = summary_wide %>% filter(station_name == "
 
 # plot_depthbin_ws_OG10
 
-plot_depth_range <- ggplot(data = summary_all) +
+plot_depth_range <- ggplot(data = summary_all2) +
   # geom_point(aes(x = station_name, y = -min_depth, colour = group)) +
   # geom_point(aes(x = station_name, y = -max_depth, colour = group)) +
   # geom_rect(aes(ymin = -min_depth, ymax = -max_depth, fill = group, x = station_name)) +
   geom_linerange(aes(ymin = min_depth, ymax = max_depth, x = station_name, color = group), linewidth = 3, alpha = 0.7) +
-  geom_text(aes(x = station_name, y = -30, label = paste0("n =  ", n_detect)), vjust = -1.5, angle = 60) +
+  geom_text(aes(x = station_name, y = -50, label = paste0("n =  ", n_detect)), angle = 60) +
   theme_minimal(base_size = 12) +
+  scale_y_continuous(limits = c(-53,0)) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
   labs(title = "Min. & max. depth (depth vs shark detections)", 
        x = "Receiver Station", y = "Depth in m", color = "Group")
 
-plot_depth_range
+plot_depth_range #%>% ggplotly()
 
-# violin plot with depths
+# heatmap with depths
+# with data from the hackathon 
 plot_depth_range_heatmap <- ggplot(data = summary_wide,
                                   aes(x = station_name, y = depth_range, fill = value)) + #, color = group
   geom_tile(linewidth = 0.5) +
   facet_grid(vars(group), scales="free_y") +
-  # geom_point(aes(x = station_name, y = -min_depth, colour = group)) +
-  # geom_point(aes(x = station_name, y = -max_depth, colour = group)) +
-  # geom_rect(aes(ymin = -min_depth, ymax = -max_depth, fill = group, x = station_name)) +
-  # geom_linerange(aes(ymin = min_depth, ymax = max_depth, x = station_name, color = group), linewidth = 3, alpha = 0.7) +
   theme_minimal(base_size = 12) +
   scale_fill_viridis_c() +
-  # scale_y_reverse(labels = c("0-10 m", "10-20 m", "20-30 m", "30-40 m", "40-50 m")) +
-  # scale_fill_manual(palette = "RdYlBl") +
   scale_y_discrete(labels = c("40-50 m", "30-40 m", "20-30 m", "10-20 m", "0-10 m")) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
   labs(
     title = "Percentage of detections vs depth coverage",
        x = "Receiver Station", y = "Depth bins in m", fill = "Percentage")
 
-plot_depth_range_heatmap
+plot_depth_range_heatmap #%>% ggplotly()
 
+# with redone detection summaries
+plot_depth_range_heatmap2 <- ggplot(data = summary_wide2,
+                                   aes(x = station_name, y = depth_range, fill = value)) + #, color = group
+  geom_tile(linewidth = 0.5) +
+  facet_grid(vars(group), scales="free_y") +
+  theme_minimal(base_size = 12) +
+  scale_fill_viridis_c() +
+  scale_y_discrete(labels = c("40-50 m", "30-40 m", "20-30 m", "10-20 m", "0-10 m")) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(
+    title = "Percentage of detections vs depth coverage",
+    x = "Receiver Station", y = "Depth bins in m", fill = "Percentage")
 
-# split violin plot
-p_308_vertical_speed_splitviolin <- ggplot(masterias_depth_temp_summary %>% filter(tag_serial_number %in% c("1293308"), vertical_speed_m_min <= 0.5), 
-                                           aes(x = monthyear, y = vertical_speed_m_min, fill = day, colour = day)) + 
-  geom_split_violin() +
-  labs(title = "Tag 308 (female)", y = "vertical speed in m/min", x = "month") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle=60, hjust=1))
+plot_depth_range_heatmap2 #%>% ggplotly()
 
 
 # sharks_detections %>% filter(station_name == "ws-OG10", sensor_type == "pressure", tag_serial_number == "1293302") %>% View()
@@ -132,5 +167,5 @@ plot_sharks_wsOG10 <- ggplot(data = sharks_detections %>% filter(station_name ==
   labs(title = "Shark detection depths at station ws-OG10", 
        x = "Tag Serial Number", y = "Depth in m")
 
-plot_sharks_wsOG10
+# plot_sharks_wsOG10
 
